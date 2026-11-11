@@ -1,0 +1,63 @@
+# ============ 通用 ============
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+*.tmp
+*.bak
+*.swp
+
+# ============ ESP32 ============
+build/
+managed_components/
+sdkconfig
+sdkconfig.old
+*.bin
+*.elf
+*.map
+compile_commands.json
+.clangd/
+build_log.txt
+
+# ============ STM32 ============
+# Keil MDK
+Objects/
+Listings/
+DebugConfig/
+RTE/
+*.uvoptx
+*.uvguix.*
+*.crf
+*.o
+*.dep
+*.axf
+*.hex
+*.lnp
+# STM32CubeIDE
+Debug/
+Release/
+.settings/
+.cproject
+.project
+# 通用
+*.list
+*.map
+
+# ============ Java 后端（Maven/Gradle）============
+target/
+build/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+.gradle/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# ============ Web 前端 ============
+node_modules/
+dist/
+.env
+.env.local

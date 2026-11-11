@@ -1,0 +1,12 @@
+{
+  "folders": [
+    { "path": "./server" },
+    { "path": "./client" }
+  ],
+  "settings": {
+    "files.watcherExclude": {
+      "**/server/node_modules/**": true,
+      "**/client/node_modules/**": true
+    }
+  }
+}

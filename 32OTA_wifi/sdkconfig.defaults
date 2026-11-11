@@ -1,0 +1,44 @@
+# ESP-IDF 项目配置默认值
+# 基于 ESP-IDF 6.1.0, 目标芯片 ESP32-S3
+# 将此文件复制到新项目中即可复用这些配置
+
+# Flash 大小: 8MB (默认 2MB)
+CONFIG_ESPTOOLPY_FLASHSIZE_8MB=y
+
+# CPU 主频: 240MHz (默认 160MHz)
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_240=y
+
+# 启用 PSRAM (默认关闭)
+CONFIG_SPIRAM=y
+
+# PSRAM 模式: Octal SPI (默认 Quad)
+CONFIG_SPIRAM_MODE_OCT=y
+
+# PSRAM 速度: 80MHz (默认 40MHz)
+CONFIG_SPIRAM_SPEED_80M=y
+
+# Factory 分区: 自定义 3MB（默认单分区 1MB 不够，引入 HTTPS/SNTP 后固件超 1MB）
+# 配套文件: partitions.csv
+
+# ========= BLE 动态配网 关键配置 =========
+# 启用蓝牙控制器 (Bluedroid)
+CONFIG_BT_ENABLED=y
+# 启用完整 BT 栈
+CONFIG_BT_BLUEDROID_ENABLED=y
+# 启用 BLE 低功耗蓝牙
+CONFIG_BT_BLE_ENABLED=y
+# 强制开启 BLE 4.2 传统广播，protocomm 的 simple_ble.c 硬编码用了这些 API
+CONFIG_BT_BLE_42_FEATURES_SUPPORTED=y
+# 必须禁用 BLE 5.0，ESP32-S3 默认 y 会导致 4.2 API 链接失败
+CONFIG_BT_BLE_50_FEATURES_SUPPORTED=n
+# 允许明文安全层，手机 APP 能连接配网
+CONFIG_ESP_PROTOCOMM_SUPPORT_SECURITY_VERSION_0=y
+# 彻底禁用 IPv6，避免 OBS CDN 返回 IPv6 节点无路由
+CONFIG_LWIP_IPV6=n
+
+# ========= 修复 HTTPS/TLS 握手卡死 =========
+# main 任务栈过小(默认 3584B)会导致 mbedtls TLS 握手栈溢出卡死，提到 8KB
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=8192
+
+# DNS 允许解析多个 IP，避免华为云 OBS 轮询到不通的 IP 后卡死
+CONFIG_LWIP_DNS_MAX_HOST_IP=5

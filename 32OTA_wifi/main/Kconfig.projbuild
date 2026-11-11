@@ -1,0 +1,31 @@
+menu "OTA Cloud Configuration (华为云 IoTDA)"
+
+    config OTA_DEVICE_ID
+        string "华为云 IoTDA 设备 ID"
+        default ""
+        help
+            华为云 IoTDA 平台注册设备时生成的 device_id。
+            通过 `idf.py menuconfig` 配置，禁止硬编码到源码中。
+
+    config OTA_DEVICE_SECRET
+        string "华为云 IoTDA 设备密钥"
+        default ""
+        help
+            华为云 IoTDA 平台注册设备时生成的 device_secret。
+            属于敏感信息，通过 `idf.py menuconfig` 配置并妥善保管，
+            禁止提交到版本库。
+
+    config OTA_IOTDA_HOST
+        string "华为云 IoTDA 实例接入地址"
+        default ""
+        help
+            IoTDA 实例的 MQTT 接入域名，例如：
+            f1fa601837.st1.iotda-device.cn-north-4.myhuaweicloud.com
+
+    config OTA_IOTDA_PORT
+        int "华为云 IoTDA MQTT/TLS 端口"
+        default 8883
+        help
+            华为云 IoTDA 的 MQTT over TLS 端口，默认 8883。
+
+endmenu

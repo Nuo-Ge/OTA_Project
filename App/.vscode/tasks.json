@@ -1,0 +1,22 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cmake",
+			"label": "CMake: 构建",
+			"command": "build",
+			"preset": "Debug",
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "CMake 构建任务"
+		},
+		{
+			"type": "cmake",
+			"label": "CMake: 安装",
+			"command": "install",
+			"preset": "Debug",
+			"problemMatcher": [],
+			"detail": "CMake 模板 安装 任务"
+		}
+	]
+}
